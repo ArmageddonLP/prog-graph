@@ -1,6 +1,6 @@
 #---ROLE
 ###------save
-POST http://localhost:8082/api/v1/role
+POST http://localhost:8081/api/v1/role
 Content-Type: application/json
 
 {
@@ -10,13 +10,13 @@ Content-Type: application/json
 }
 
 ###------getAll
-GET http://localhost:8082/api/v1/role
+GET http://localhost:8081/api/v1/role
 
 ###------getById
-GET http://localhost:8082/api/v1/role/1
+GET http://localhost:8081/api/v1/role/1
 
 ###------getByShorthand
-GET http://localhost:8082/api/v1/role/query?shorthand=name
+GET http://localhost:8081/api/v1/role/query?shorthand=name
 
 ###------deleteById
-DELETE http://localhost:8082/api/v1/role/1
+DELETE http://localhost:8081/api/v1/role/1

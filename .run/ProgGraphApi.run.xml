@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="ProgGraphApi" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" path="$PROJECT_DIR$/src/test/java/com/arma/proggraph/ProgGraphApi.rest" index="3" requestIdentifier="------getByShorthand">
+  <configuration default="false" name="ProgGraphApi" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" path="$PROJECT_DIR$/src/test/java/com/arma/proggraph/ProgGraphApi.rest" index="4" requestIdentifier="------getByShorthand">
     <method v="2" />
   </configuration>
 </component>

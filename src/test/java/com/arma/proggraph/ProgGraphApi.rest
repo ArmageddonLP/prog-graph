@@ -1,0 +1,22 @@
+#---ROLE
+###------save
+POST http://localhost:8082/api/v1/role
+Content-Type: application/json
+
+{
+  "id": null,
+  "name": "name",
+  "uniqueShorthand": "name"
+}
+
+###------getAll
+GET http://localhost:8082/api/v1/role
+
+###------getById
+GET http://localhost:8082/api/v1/role/1
+
+###------getByShorthand
+GET http://localhost:8082/api/v1/role/query?shorthand=name
+
+###------deleteById
+DELETE http://localhost:8082/api/v1/role/1
