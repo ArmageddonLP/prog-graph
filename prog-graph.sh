@@ -12,9 +12,14 @@ function localPostgresDocker () {
   docker stop postgres-db
 }
 function installDependencies () {
-  sudo apt-get update
-  sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
-  docker pull postgres
+  sudo apt-get update -y
+  sudo apt-get upgrade -y
+  sudo apt-get install docker -y
+  sudo apt autoremove -y
+  sudo docker pull postgres
+  sudo groupadd docker
+  sudo usermod -aG docker $USER
+  sudo shutdown -r now
 }
 function exec {
   if [ $1 = build ]
