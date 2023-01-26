@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+  db-prod:
+    container_name: db-prod
+    environment:
+      POSTGRES_DB: prog_graph
+      POSTGRES_USER: postgres #TODO user into vault
+      POSTGRES_PASSWORD: pw_postgres #TODO password into vault
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    restart: always
+  app-prod:
+    container_name: app-prod
+    depends_on:
+      - db-prod
+    environment:
+      SERVER_PORT: 8080
+      SYSTEM_ENV: prod
+      POSTGRES_DB: prog_graph
+      POSTGRES_HOST: db-prod
+      POSTGRES_PORT: 5432
+      POSTGRES_USER: postgres #TODO user into vault
+      POSTGRES_PASSWORD: pw_postgres #TODO password into vault
+    image: prog-graph_app-prod
+    ports:
+      - "8080:8080"
+    restart: always
