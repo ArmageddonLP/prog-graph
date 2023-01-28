@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  db-int:
+    command: [ "postgres", "-c", "log_statement=all" ]
+    container_name: db-int
+    environment:
+      POSTGRES_DB: prog-graph
+      POSTGRES_USER: postgres-int
+      POSTGRES_PASSWORD: postgres-int
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    restart: always
+  app-int:
+    container_name: app-int
+    depends_on:
+      - db-int
+    environment:
+      SERVER_PORT: 8080
+      SYSTEM_ENV: int
+      POSTGRES_DB: prog-graph
+      POSTGRES_HOST: db-int
+      POSTGRES_PORT: 5432
+      POSTGRES_USER: postgres-int
+      POSTGRES_PASSWORD: postgres-int
+    image: prog-graph_app-int
+    ports:
+      - "8080:8080"
+    restart: always

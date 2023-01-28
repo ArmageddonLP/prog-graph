@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  db-test:
+    command: [ "postgres", "-c", "log_statement=all" ]
+    container_name: db-test
+    environment:
+      POSTGRES_DB: prog-graph
+      POSTGRES_USER: postgres-test
+      POSTGRES_PASSWORD: postgres-test
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    restart: always
+  app-test:
+    container_name: app-test
+    depends_on:
+      - db-test
+    environment:
+      SERVER_PORT: 8080
+      SYSTEM_ENV: test
+      POSTGRES_DB: prog-graph
+      POSTGRES_HOST: db-test
+      POSTGRES_PORT: 5432
+      POSTGRES_USER: postgres-test
+      POSTGRES_PASSWORD: postgres-test
+    image: prog-graph_app-test
+    ports:
+      - "8080:8080"
+    restart: always
